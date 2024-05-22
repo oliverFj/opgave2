@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/sensors.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/mqtt.min.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/itu_mqtt.js"></script>
+  <script language="javascript" type="text/javascript" src="opgave2Desktop.js"></script>
+  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body class="flex flex-col items-center justify-center h-screen bg-gray-100">
+  <div id="canvas-container" class="shadow-lg"></div>
+  <img src="qr.png" alt="QR Code" class="mt-4 shadow-lg">
+</body>
+</html>
+
+
+
+<!-- mobil html -->
+<!--
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/sensors.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/mqtt.min.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/itu_mqtt.js"></script>
+  <script language="javascript" type="text/javascript" src="opgave2Mobile.js"></script>
+
+
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      overflow: hidden; /* Prevent overflow */
+    }
+    .shadow {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    .pressed {
+      background-color: #2b6cb0 !important; /* Darker shade of blue for motion button */
+    }
+    .pressed-gyroscope {
+      background-color: #276749 !important; /* Darker shade of green for gyroscope button */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex flex-col justify-center items-center h-screen space-y-4">
+      <button id="toggleMotionBtn" class="w-3/4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow" onclick="toggleMotion()">
+        Toggle Motion
+      </button>
+      <button id="toggleGyroscopeBtn" class="w-3/4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow" onclick="toggleGyroscope()">
+        Toggle Gyroscope
+      </button>
+  </div>
+
+  <script>
+    // Function to update button styles
+    function updateButtonStyles() {
+      const motionButton = document.getElementById('toggleMotionBtn');
+      const gyroscopeButton = document.getElementById('toggleGyroscopeBtn');
+      
+      if (sendMotionData) {
+        motionButton.classList.add('pressed');
+        motionButton.classList.remove('shadow');
+      } else {
+        motionButton.classList.remove('pressed');
+        motionButton.classList.add('shadow');
+      }
+      
+      if (sendGyroscopeData) {
+        gyroscopeButton.classList.add('pressed-gyroscope');
+        gyroscopeButton.classList.remove('shadow');
+      } else {
+        gyroscopeButton.classList.remove('pressed-gyroscope');
+        gyroscopeButton.classList.add('shadow');
+      }
+    }
+
+    function toggleGyroscope() {
+      sendGyroscopeData = !sendGyroscopeData;
+      sendMotionData = false; // Ensure motion data is disabled when gyroscope is enabled
+      console.log(`Gyroscope data sending is now ${sendGyroscopeData ? 'enabled' : 'disabled'}`);
+      
+      // Update button styles
+      updateButtonStyles();
+    }
+
+    function toggleMotion() {
+      sendMotionData = !sendMotionData;
+      sendGyroscopeData = false; // Ensure gyroscope data is disabled when motion is enabled
+      console.log(`Motion data sending is now ${sendMotionData ? 'enabled' : 'disabled'}`);
+      
+      // Update button styles
+      updateButtonStyles();
+    }
+  </script>
+</body>
+</html>
+
+-->

@@ -1,0 +1,57 @@
+// opgave2Mobile.js
+// setup your topic here
+let topic = "Opgave2Oliver";
+
+let sendGyroscopeData = false; // Flag to toggle gyroscope data sending
+
+function setup() {
+  setupMQTT(topic);
+  setupMotion(10); // Initialize motion sensor with a threshold
+  setupOrientation(10);
+}
+
+function draw() {
+  // Check if new motion sensor data is available and gyroscope data sending is disabled
+  if (!sendGyroscopeData && motionSensor.hasNewValue) {
+    let motionData = motionSensor.get();
+    sendMotionData(motionData);
+  }
+
+  // Check if new gyroscope data is available and the flag is set
+  if (sendGyroscopeData && orientationSensor.hasNewValue) {
+    let orientationData = orientationSensor.get();
+    sendGyroscopeDataFunc(orientationData);
+  }
+}
+
+function touchStarted() {
+  setupMotion(10);
+  setupOrientation(10);
+}
+
+function sendMotionData(motionData) {
+  let message = {
+    "from": config.myID,
+    "type": "motion",
+    "x": motionData.x,
+    "y": motionData.y,
+    "z": motionData.z
+  };
+  sendMessage(message);
+}
+
+function sendGyroscopeDataFunc(orientationData) {
+  let message = {
+    "from": config.myID,
+    "type": "gyroscope",
+    "alpha": orientationData.alpha,
+    "beta": orientationData.beta,
+    "gamma": orientationData.gamma
+  };
+  sendMessage(message);
+}
+
+function toggleGyroscope() {
+  sendGyroscopeData = !sendGyroscopeData;
+  console.log(`Gyroscope data sending is now ${sendGyroscopeData ? 'enabled' : 'disabled'}`);
+}
